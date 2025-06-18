@@ -49,6 +49,7 @@ export function LoadFileDialog() {
         </DialogHeader>
         <Input
           ref={inputRef}
+          accept=".png"
           type="file"
           onChange={handleFileChange}
           className="mb-4"
