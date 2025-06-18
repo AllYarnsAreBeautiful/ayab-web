@@ -1,6 +1,7 @@
 import type { Color } from "@/importers/png";
 
 export default function Row({ data }: { data: Color[] }) {
+  if (data.length > 200) data = data.slice(0, 200);
   const spacerSize = (200 - data.length) / 2;
   console.log(spacerSize);
   return (
