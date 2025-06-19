@@ -3,7 +3,11 @@ import React, { useRef } from "react";
 import { usePng } from "@/context/png-context";
 import { importPngBufferAsLines } from "@/importers/png";
 
-export default function LocalFileGet() {
+export default function LocalFileGet({
+  closeDialog,
+}: {
+  closeDialog?: () => void;
+}) {
   const inputRef = useRef<HTMLInputElement>(null);
   const { setPngData } = usePng();
 
@@ -20,6 +24,7 @@ export default function LocalFileGet() {
       } catch (err) {
         console.error("Failed to parse PNG:", err);
       }
+      closeDialog?.();
     };
     reader.readAsArrayBuffer(file);
   }

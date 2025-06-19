@@ -13,10 +13,12 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TabsContent } from "@radix-ui/react-tabs";
 import LocalFileGet from "./local-file-get";
 import BasePatternExplorer from "./base-pattern-explorer";
+import { useState } from "react";
 
 export function LoadFileDialog() {
+  const [open, setOpen] = useState(false);
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button>Load File</Button>
       </DialogTrigger>
@@ -39,13 +41,13 @@ export function LoadFileDialog() {
             value="explore"
             className="flex-1 h-full min-h-0 flex flex-col"
           >
-            <BasePatternExplorer />
+            <BasePatternExplorer closeDialog={() => setOpen(false)} />
           </TabsContent>
           <TabsContent
             value="local-file"
             className="flex-1 h-full min-h-0 flex flex-col"
           >
-            <LocalFileGet />
+            <LocalFileGet closeDialog={() => setOpen(false)} />
           </TabsContent>
         </Tabs>
         <DialogFooter>

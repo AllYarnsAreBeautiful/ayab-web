@@ -21,7 +21,11 @@ async function handlePngUrlSelect(
   setPngData(lines);
 }
 
-export default function BasePatternExplorer() {
+export default function BasePatternExplorer({
+  closeDialog,
+}: {
+  closeDialog?: () => void;
+}) {
   // Get assets from ayab-patterns and display them in a grid.
   const { setPngData } = usePng();
   return (
@@ -33,6 +37,7 @@ export default function BasePatternExplorer() {
               key={index}
               onClick={() => {
                 handlePngUrlSelect(ayabPatterns[path].default, setPngData);
+                closeDialog?.();
               }}
             >
               <AspectRatio ratio={1} className="w-full h-full">
