@@ -11,11 +11,9 @@ export type Color = {
 // Import PNG from ArrayBuffer and convert to array of lines of colors
 export function importPngBufferAsLines(buffer: ArrayBuffer): Color[][] {
   const upng = UPNG.decode(buffer);
-  console.log(upng);
   const width = upng.width;
   const height = upng.height;
   const rgba = new Uint8Array(UPNG.toRGBA8(upng)[0]);
-  console.log(rgba);
   const lines: Color[][] = [];
   for (let row = 0; row < height; row++) {
     const line: Color[] = [];

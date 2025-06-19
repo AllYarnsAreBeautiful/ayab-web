@@ -11,12 +11,12 @@ function Bar() {
   );
 }
 export default function Pattern() {
-  const c = usePng();
+  const { pngData } = usePng();
   return (
     <div className="w-full h-20">
       <Bar></Bar>
       <ScrollArea>
-        {c.pngData?.map((row, index) => (
+        {pngData?.map((row, index) => (
           <Row key={index} data={row} />
         ))}
       </ScrollArea>

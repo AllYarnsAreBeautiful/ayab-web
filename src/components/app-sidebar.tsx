@@ -5,7 +5,7 @@ import {
   SidebarGroup,
   SidebarHeader,
 } from "@/components/ui/sidebar";
-import { LoadFileDialog } from "@/components/load-file-dialog";
+import { LoadFileDialog } from "@/components/load-file-dialog/load-file-dialog";
 
 export function AppSidebar() {
   return (
