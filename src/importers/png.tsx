@@ -1,4 +1,4 @@
-import UPNG from "upng-js";
+import UPNG from "@pdf-lib/upng";
 
 // Standard RGBA color type
 export type Color = {
@@ -11,14 +11,16 @@ export type Color = {
 // Import PNG from ArrayBuffer and convert to array of lines of colors
 export function importPngBufferAsLines(buffer: ArrayBuffer): Color[][] {
   const upng = UPNG.decode(buffer);
+  console.log(upng);
   const width = upng.width;
   const height = upng.height;
   const rgba = new Uint8Array(UPNG.toRGBA8(upng)[0]);
+  console.log(rgba);
   const lines: Color[][] = [];
-  for (let y = 0; y < height; y++) {
+  for (let row = 0; row < height; row++) {
     const line: Color[] = [];
-    for (let x = 0; x < width; x++) {
-      const idx = (width * y + x) * 4;
+    for (let col = 0; col < width; col++) {
+      const idx = (width * row + col) * 4;
       line.push({
         r: rgba[idx],
         g: rgba[idx + 1],
