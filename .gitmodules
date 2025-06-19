@@ -1,0 +1,3 @@
+[submodule "src/assets/ayab-patterns"]
+	path = src/assets/ayab-patterns
+	url = https://github.com/AllYarnsAreBeautiful/ayab-patterns
