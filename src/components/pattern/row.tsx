@@ -1,4 +1,4 @@
-import type { Color } from "@/importers/png";
+import type { Color } from "@/context/png-context";
 
 export default function Row({ data }: { data: Color[] }) {
   if (data.length > 200) data = data.slice(0, 200);

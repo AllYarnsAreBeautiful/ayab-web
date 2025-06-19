@@ -1,15 +1,11 @@
+import type { Color, PngData } from "@/context/png-context";
 import UPNG from "@pdf-lib/upng";
 
-// Standard RGBA color type
-export type Color = {
-  r: number;
-  g: number;
-  b: number;
-  a: number;
-};
-
 // Import PNG from ArrayBuffer and convert to array of lines of colors
-export function importPngBufferAsLines(buffer: ArrayBuffer): Color[][] {
+export function importPngBufferAsLines(
+  buffer: ArrayBuffer,
+  name: string
+): PngData {
   const upng = UPNG.decode(buffer);
   const width = upng.width;
   const height = upng.height;
@@ -28,5 +24,10 @@ export function importPngBufferAsLines(buffer: ArrayBuffer): Color[][] {
     }
     lines.push(line);
   }
-  return lines;
+  return {
+    title: name,
+    width,
+    height,
+    data: lines,
+  };
 }

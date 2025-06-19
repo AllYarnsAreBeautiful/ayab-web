@@ -1,7 +1,11 @@
 import React, { createContext, useContext, useState } from "react";
-import type { Color } from "@/importers/png";
 
-export type PngData = Color[][] | null;
+export type PngData = {
+  title: string;
+  width: number;
+  height: number;
+  data: Color[][];
+} | null;
 
 interface PngContextType {
   pngData: PngData;
@@ -24,3 +28,10 @@ export function PngProvider({ children }: { children: React.ReactNode }) {
     </PngContext.Provider>
   );
 }
+
+export type Color = {
+  r: number;
+  g: number;
+  b: number;
+  a: number;
+};

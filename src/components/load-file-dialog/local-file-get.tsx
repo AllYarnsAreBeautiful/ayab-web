@@ -19,7 +19,7 @@ export default function LocalFileGet({
       const buffer = e.target?.result;
       if (!buffer || !(buffer instanceof ArrayBuffer)) return;
       try {
-        const lines = importPngBufferAsLines(buffer);
+        const lines = importPngBufferAsLines(buffer, file.name);
         setPngData(lines);
       } catch (err) {
         console.error("Failed to parse PNG:", err);

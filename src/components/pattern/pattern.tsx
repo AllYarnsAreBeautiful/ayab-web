@@ -4,7 +4,7 @@ import Row from "./row";
 
 function Bar() {
   return (
-    <div className="flex w-full h-5">
+    <div className="flex w-full h-5 flex-none">
       <div className="bg-amber-400 flex-1" />
       <div className="bg-green-600 flex-1" />
     </div>
@@ -13,13 +13,13 @@ function Bar() {
 export default function Pattern() {
   const { pngData } = usePng();
   return (
-    <div className="w-full h-20">
+    <>
       <Bar></Bar>
-      <ScrollArea>
-        {pngData?.map((row, index) => (
+      <ScrollArea className="min-h-0 flex-1">
+        {pngData?.data?.map((row, index) => (
           <Row key={index} data={row} />
         ))}
       </ScrollArea>
-    </div>
+    </>
   );
 }

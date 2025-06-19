@@ -1,7 +1,8 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card } from "@/components/ui/card";
-import { type Color, importPngBufferAsLines } from "@/importers/png";
+import { importPngBufferAsLines } from "@/importers/png";
+import { type PngData } from "@/context/png-context";
 import { usePng } from "@/context/png-context";
 
 const ayabPatterns = import.meta.glob<{ default: string }>(
@@ -13,11 +14,11 @@ const ayabPatterns = import.meta.glob<{ default: string }>(
 
 async function handlePngUrlSelect(
   url: string,
-  setPngData: (data: Color[][]) => void
+  setPngData: (data: PngData) => void
 ) {
   const response = await fetch(url);
   const buffer = await response.arrayBuffer();
-  const lines = importPngBufferAsLines(buffer);
+  const lines = importPngBufferAsLines(buffer, url.split("/").pop() ?? "");
   setPngData(lines);
 }
 
